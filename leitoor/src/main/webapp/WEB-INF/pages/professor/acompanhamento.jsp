@@ -18,7 +18,8 @@
     <div class="row acomp">
         <div class="col-md-12">
             <div class="leitoor-tab">
-                <ul class="nav nav-tabs nav-left" role="tablist">
+                <div id="sticky-holder" class="nav nav-tabs nav-left"></div>
+                <ul id="sticky-nav" class="nav nav-tabs nav-left" role="tablist">
                     <li class="active"><a href="#atividade" role="tab"
                         data-toggle="tab">${tarefa.tarefa} - ${tarefa.turma}</a></li>
                 </ul>
@@ -193,6 +194,28 @@
 
         chart.draw(data, options);
     };
+
+    $(window).scroll(function(){
+        var aboveHeight = 87;
+        //if scrolled down more than the header’s height
+            if ($(window).scrollTop() > aboveHeight){
+
+        // if yes, add “fixed” class to the <nav>
+        // add padding top to the #content
+        // (value is same as the height of the nav)
+            $('#sticky-nav').addClass('sticky-nav-fixed');
+            $('#sticky-holder').height(40);
+            $('#sticky-holder').css({display:'block'});
+            } else {
+                //console.log("check:" + $('#sticky-nav'));
+        // when scroll up or less than aboveHeight,
+        //    remove the “fixed” class, and the padding-top
+            $('#sticky-nav').removeClass('sticky-nav-fixed');
+            $('#sticky-holder').height(0);
+            $('#sticky-holder').css({display:'none'});
+            }
+    });
+
 
     google.setOnLoadCallback(desenharTotalGeral);
     google.setOnLoadCallback(desenharTotalLeitura);
