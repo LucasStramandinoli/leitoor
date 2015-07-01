@@ -199,20 +199,13 @@
         var aboveHeight = 87;
         //if scrolled down more than the header’s height
             if ($(window).scrollTop() > aboveHeight){
-
-        // if yes, add “fixed” class to the <nav>
-        // add padding top to the #content
-        // (value is same as the height of the nav)
-            $('#sticky-nav').addClass('sticky-nav-fixed');
-            $('#sticky-holder').height(40);
-            $('#sticky-holder').css({display:'block'});
+                $('#sticky-nav').addClass('sticky-nav-fixed');
+                $('#sticky-holder').height(40);
+                $('#sticky-holder').css({display:'block'});
             } else {
-                //console.log("check:" + $('#sticky-nav'));
-        // when scroll up or less than aboveHeight,
-        //    remove the “fixed” class, and the padding-top
-            $('#sticky-nav').removeClass('sticky-nav-fixed');
-            $('#sticky-holder').height(0);
-            $('#sticky-holder').css({display:'none'});
+                $('#sticky-nav').removeClass('sticky-nav-fixed');
+                $('#sticky-holder').height(0);
+                $('#sticky-holder').css({display:'none'});
             }
     });
 
